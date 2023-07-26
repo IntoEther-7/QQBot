@@ -8,8 +8,8 @@ package org.ether.qqbot.entity;
 public class Role {
     private String id;
     private String name;
-    private int color; // ÎŞ·ûºÅÕûÊı
-    private int hoist; // ÎŞ·ûºÅÕûÊı
-    private int number; // ÎŞ·ûºÅÕûÊı
-    private int member_limit; // ÎŞ·ûºÅÕûÊı
+    private int color; // æ— ç¬¦å·æ•´æ•°
+    private int hoist; // æ— ç¬¦å·æ•´æ•°
+    private int number; // æ— ç¬¦å·æ•´æ•°
+    private int member_limit; // æ— ç¬¦å·æ•´æ•°
 }

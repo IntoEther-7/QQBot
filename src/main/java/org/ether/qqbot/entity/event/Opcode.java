@@ -4,12 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Opcode {
-    DISPATCH(0, "Dispatch", "Receive", "·şÎñ¶Ë½øĞĞÏûÏ¢ÍÆËÍ"), HEARTBEAT(1, "Heartbeat", "Send/Receive", "¿Í»§¶Ë»ò·şÎñ¶Ë·¢ËÍĞÄÌø"),
-    IDENTIFY(2, "Identify", "Send", "¿Í»§¶Ë·¢ËÍ¼øÈ¨"), RESUME(6, "Resume", "Send", "¿Í»§¶Ë»Ö¸´Á¬½Ó"), RECONNECT(7, "Reconnect",
-            "Receive", "·şÎñ¶ËÍ¨Öª¿Í»§¶ËÖØĞÂÁ¬½Ó"), INVALID_SESSION(9, "Invalid Session", "Receive", "µ±identify»òresume" +
-            "µÄÊ±ºò£¬Èç¹û²ÎÊıÓĞ´í£¬·şÎñ¶Ë»á·µ»Ø¸ÃÏûÏ¢"), HELLO(10, "Hello", "Receive", "µ±¿Í»§¶ËÓëÍø¹Ø½¨Á¢wsÁ¬½ÓÖ®ºó£¬Íø¹ØÏÂ·¢µÄµÚÒ»ÌõÏûÏ¢"), HEARTBEAT_ACK(11,
-            "Heartbeat ACK", "Receive/Reply", "µ±·¢ËÍĞÄÌø³É¹¦Ö®ºó£¬¾Í»áÊÕµ½¸ÃÏûÏ¢"), HTTP_CALLBACK_ACK(12, "HTTP Callback ACK", "Reply"
-            , "½öÓÃÓÚ http »Øµ÷Ä£Ê½µÄ»Ø°ü£¬´ú±í»úÆ÷ÈËÊÕµ½ÁËÆ½Ì¨ÍÆËÍµÄÊı¾İ");
+    DISPATCH(0, "Dispatch", "Receive", "æœåŠ¡ç«¯è¿›è¡Œæ¶ˆæ¯æ¨é€"),
+    HEARTBEAT(1, "Heartbeat", "Send/Receive", "å®¢æˆ·ç«¯æˆ–æœåŠ¡ç«¯å‘é€å¿ƒè·³"),
+    IDENTIFY(2, "Identify", "Send", "å®¢æˆ·ç«¯å‘é€é‰´æƒ"),
+    RESUME(6, "Resume", "Send", "å®¢æˆ·ç«¯æ¢å¤è¿æ¥"),
+    RECONNECT(7, "Reconnect", "Receive", "æœåŠ¡ç«¯é€šçŸ¥å®¢æˆ·ç«¯é‡æ–°è¿æ¥"),
+    INVALID_SESSION(9, "Invalid Session", "Receive", "å½“identifyæˆ–resumeçš„æ—¶å€™ï¼Œå¦‚æœå‚æ•°æœ‰é”™ï¼ŒæœåŠ¡ç«¯ä¼šè¿”å›è¯¥æ¶ˆæ¯"),
+    HELLO(10, "Hello", "Receive", "å½“å®¢æˆ·ç«¯ä¸ç½‘å…³å»ºç«‹wsè¿æ¥ä¹‹åï¼Œç½‘å…³ä¸‹å‘çš„ç¬¬ä¸€æ¡æ¶ˆæ¯"),
+    HEARTBEAT_ACK(11, "Heartbeat ACK", "Receive/Reply", "å½“å‘é€å¿ƒè·³æˆåŠŸä¹‹åï¼Œå°±ä¼šæ”¶åˆ°è¯¥æ¶ˆæ¯"),
+    HTTP_CALLBACK_ACK(12, "HTTP Callback ACK", "Reply", "ä»…ç”¨äº http å›è°ƒæ¨¡å¼çš„å›åŒ…ï¼Œä»£è¡¨æœºå™¨äººæ”¶åˆ°äº†å¹³å°æ¨é€çš„æ•°æ®");
 
     private int code;
     private String name;
@@ -36,5 +39,21 @@ public enum Opcode {
     public String toString() {
         return "Opcode{" + "code=" + code + ", name='" + name + '\'' + ", clientOption='" + clientOption + '\'' + ", " +
                 "desc='" + desc + '\'' + '}';
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getClientOption() {
+        return clientOption;
+    }
+
+    public String getDesc() {
+        return desc;
     }
 }

@@ -9,7 +9,7 @@ package org.ether.qqbot.entity;
 import lombok.Data;
 
 /**
- * ÆµµÀ¶ÔÏó(Guild)
+ * é¢‘é“å¯¹è±¡(Guild)
  */
 @Data
 public class Guild {

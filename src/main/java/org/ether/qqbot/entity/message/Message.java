@@ -11,22 +11,22 @@ import org.ether.qqbot.entity.User;
  */
 @Data
 public class Message {
-    private String id; // ÏûÏ¢ id
-    private String channel_id; // ×ÓÆµµÀ id
-    private String guild_id; // ÆµµÀ id
-    private String content; // ÏûÏ¢ÄÚÈİ
-    private String image; // Í¼ÏñÁ´½Ó
-    private String timestamp; // ÏûÏ¢´´½¨Ê±¼ä
-    private String edited_timestamp; // ÏûÏ¢±à¼­Ê±¼ä
-    private Boolean mention_everyone; // ÊÇ·ñÊÇ@È«Ô±ÏûÏ¢
-    private User author; // ÏûÏ¢´´½¨Õß
-    private MessageAttachment[] attachments; // ¸½¼ş
+    private String id; // æ¶ˆæ¯ id
+    private String channel_id; // å­é¢‘é“ id
+    private String guild_id; // é¢‘é“ id
+    private String content; // æ¶ˆæ¯å†…å®¹
+    private String image; // å›¾åƒé“¾æ¥
+    private String timestamp; // æ¶ˆæ¯åˆ›å»ºæ—¶é—´
+    private String edited_timestamp; // æ¶ˆæ¯ç¼–è¾‘æ—¶é—´
+    private Boolean mention_everyone; // æ˜¯å¦æ˜¯@å…¨å‘˜æ¶ˆæ¯
+    private User author; // æ¶ˆæ¯åˆ›å»ºè€…
+    private MessageAttachment[] attachments; // é™„ä»¶
     private MessageEmbed[] embeds; // embed
-    private User[] mentions; // ÏûÏ¢ÖĞ@µÄÈË
-    private Member member; // ÏûÏ¢´´½¨ÕßµÄmemberĞÅÏ¢
-    private MessageArk ark; // arkÏûÏ¢
-    private Integer seq; // ÓÃÓÚÏûÏ¢¼äµÄÅÅĞò£¬seq ÔÚÍ¬Ò»×ÓÆµµÀÖĞ°´´ÓÏÈµ½ºóµÄË³ĞòµİÔö£¬²»Í¬µÄ×ÓÆµµÀÖ®¼äÏûÏ¢ÎŞ·¨ÅÅĞò¡£(Ä¿Ç°Ö»ÔÚÏûÏ¢ÊÂ¼şÖĞÓĞÖµ£¬2022Äê8ÔÂ1ÈÕ ºóĞø·ÏÆú)
-    private String seq_in_channel; // ×ÓÆµµÀÏûÏ¢ seq£¬ÓÃÓÚÏûÏ¢¼äµÄÅÅĞò£¬seq ÔÚÍ¬Ò»×ÓÆµµÀÖĞ°´´ÓÏÈµ½ºóµÄË³ĞòµİÔö£¬²»Í¬µÄ×ÓÆµµÀÖ®¼äÏûÏ¢ÎŞ·¨ÅÅĞò
-    private MessageReference message_reference; // ÒıÓÃÏûÏ¢¶ÔÏó
-    private String src_guild_id; // ÓÃÓÚË½ĞÅ³¡¾°ÏÂÊ¶±ğÕæÊµµÄÀ´Ô´ÆµµÀid
+    private User[] mentions; // æ¶ˆæ¯ä¸­@çš„äºº
+    private Member member; // æ¶ˆæ¯åˆ›å»ºè€…çš„memberä¿¡æ¯
+    private MessageArk ark; // arkæ¶ˆæ¯
+    private Integer seq; // ç”¨äºæ¶ˆæ¯é—´çš„æ’åºï¼Œseq åœ¨åŒä¸€å­é¢‘é“ä¸­æŒ‰ä»å…ˆåˆ°åçš„é¡ºåºé€’å¢ï¼Œä¸åŒçš„å­é¢‘é“ä¹‹é—´æ¶ˆæ¯æ— æ³•æ’åºã€‚(ç›®å‰åªåœ¨æ¶ˆæ¯äº‹ä»¶ä¸­æœ‰å€¼ï¼Œ2022å¹´8æœˆ1æ—¥ åç»­åºŸå¼ƒ)
+    private String seq_in_channel; // å­é¢‘é“æ¶ˆæ¯ seqï¼Œç”¨äºæ¶ˆæ¯é—´çš„æ’åºï¼Œseq åœ¨åŒä¸€å­é¢‘é“ä¸­æŒ‰ä»å…ˆåˆ°åçš„é¡ºåºé€’å¢ï¼Œä¸åŒçš„å­é¢‘é“ä¹‹é—´æ¶ˆæ¯æ— æ³•æ’åº
+    private MessageReference message_reference; // å¼•ç”¨æ¶ˆæ¯å¯¹è±¡
+    private String src_guild_id; // ç”¨äºç§ä¿¡åœºæ™¯ä¸‹è¯†åˆ«çœŸå®çš„æ¥æºé¢‘é“id
 }

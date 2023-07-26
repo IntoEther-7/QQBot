@@ -1,65 +1,65 @@
 
   GUILDS (1 << 0)
-    - GUILD_CREATE           // µ±»úÆ÷ÈË¼ÓÈëÐÂguildÊ±
-    - GUILD_UPDATE           // µ±guild×ÊÁÏ·¢Éú±ä¸üÊ±
-    - GUILD_DELETE           // µ±»úÆ÷ÈËÍË³öguildÊ±
-    - CHANNEL_CREATE         // µ±channel±»´´½¨Ê±
-    - CHANNEL_UPDATE         // µ±channel±»¸üÐÂÊ±
-    - CHANNEL_DELETE         // µ±channel±»É¾³ýÊ±
+    - GUILD_CREATE           // å½“æœºå™¨äººåŠ å…¥æ–°guildæ—¶
+    - GUILD_UPDATE           // å½“guildèµ„æ–™å‘ç”Ÿå˜æ›´æ—¶
+    - GUILD_DELETE           // å½“æœºå™¨äººé€€å‡ºguildæ—¶
+    - CHANNEL_CREATE         // å½“channelè¢«åˆ›å»ºæ—¶
+    - CHANNEL_UPDATE         // å½“channelè¢«æ›´æ–°æ—¶
+    - CHANNEL_DELETE         // å½“channelè¢«åˆ é™¤æ—¶
     
     GUILD_MEMBERS (1 << 1)
-    - GUILD_MEMBER_ADD       // µ±³ÉÔ±¼ÓÈëÊ±
-    - GUILD_MEMBER_UPDATE    // µ±³ÉÔ±×ÊÁÏ±ä¸üÊ±
-    - GUILD_MEMBER_REMOVE    // µ±³ÉÔ±±»ÒÆ³ýÊ±
+    - GUILD_MEMBER_ADD       // å½“æˆå‘˜åŠ å…¥æ—¶
+    - GUILD_MEMBER_UPDATE    // å½“æˆå‘˜èµ„æ–™å˜æ›´æ—¶
+    - GUILD_MEMBER_REMOVE    // å½“æˆå‘˜è¢«ç§»é™¤æ—¶
     
-    GUILD_MESSAGES (1 << 9)     // ÏûÏ¢ÊÂ¼þ£¬½ö *Ë½Óò* »úÆ÷ÈËÄÜ¹»ÉèÖÃ´Ë intents¡£
-    - MESSAGE_CREATE            // ·¢ËÍÏûÏ¢ÊÂ¼þ£¬´ú±íÆµµÀÄÚµÄÈ«²¿ÏûÏ¢£¬¶ø²»Ö»ÊÇ at »úÆ÷ÈËµÄÏûÏ¢¡£ÄÚÈÝÓë AT_MESSAGE_CREATE ÏàÍ¬
-    - MESSAGE_DELETE            // É¾³ý£¨³·»Ø£©ÏûÏ¢ÊÂ¼þ
+    GUILD_MESSAGES (1 << 9)     // æ¶ˆæ¯äº‹ä»¶ï¼Œä»… *ç§åŸŸ* æœºå™¨äººèƒ½å¤Ÿè®¾ç½®æ­¤ intentsã€‚
+    - MESSAGE_CREATE            // å‘é€æ¶ˆæ¯äº‹ä»¶ï¼Œä»£è¡¨é¢‘é“å†…çš„å…¨éƒ¨æ¶ˆæ¯ï¼Œè€Œä¸åªæ˜¯ at æœºå™¨äººçš„æ¶ˆæ¯ã€‚å†…å®¹ä¸Ž AT_MESSAGE_CREATE ç›¸åŒ
+    - MESSAGE_DELETE            // åˆ é™¤ï¼ˆæ’¤å›žï¼‰æ¶ˆæ¯äº‹ä»¶
     
     GUILD_MESSAGE_REACTIONS (1 << 10)
-    - MESSAGE_REACTION_ADD    // ÎªÏûÏ¢Ìí¼Ó±íÇé±íÌ¬
-    - MESSAGE_REACTION_REMOVE // ÎªÏûÏ¢É¾³ý±íÇé±íÌ¬
+    - MESSAGE_REACTION_ADD    // ä¸ºæ¶ˆæ¯æ·»åŠ è¡¨æƒ…è¡¨æ€
+    - MESSAGE_REACTION_REMOVE // ä¸ºæ¶ˆæ¯åˆ é™¤è¡¨æƒ…è¡¨æ€
     
     DIRECT_MESSAGE (1 << 12)
-    - DIRECT_MESSAGE_CREATE   // µ±ÊÕµ½ÓÃ»§·¢¸ø»úÆ÷ÈËµÄË½ÐÅÏûÏ¢Ê±
-    - DIRECT_MESSAGE_DELETE   // É¾³ý£¨³·»Ø£©ÏûÏ¢ÊÂ¼þ
+    - DIRECT_MESSAGE_CREATE   // å½“æ”¶åˆ°ç”¨æˆ·å‘ç»™æœºå™¨äººçš„ç§ä¿¡æ¶ˆæ¯æ—¶
+    - DIRECT_MESSAGE_DELETE   // åˆ é™¤ï¼ˆæ’¤å›žï¼‰æ¶ˆæ¯äº‹ä»¶
     
-    OPEN_FORUMS_EVENT (1 << 18)       // ÂÛÌ³ÊÂ¼þ, ´ËÎª¹«ÓòµÄÂÛÌ³ÊÂ¼þ
-    - OPEN_FORUM_THREAD_CREATE        // µ±ÓÃ»§´´½¨Ö÷ÌâÊ±
-    - OPEN_FORUM_THREAD_UPDATE        // µ±ÓÃ»§¸üÐÂÖ÷ÌâÊ±
-    - OPEN_FORUM_THREAD_DELETE        // µ±ÓÃ»§É¾³ýÖ÷ÌâÊ±
-    - OPEN_FORUM_POST_CREATE          // µ±ÓÃ»§´´½¨Ìû×ÓÊ±
-    - OPEN_FORUM_POST_DELETE          // µ±ÓÃ»§É¾³ýÌû×ÓÊ±
-    - OPEN_FORUM_REPLY_CREATE         // µ±ÓÃ»§»Ø¸´ÆÀÂÛÊ±
-    - OPEN_FORUM_REPLY_DELETE         // µ±ÓÃ»§É¾³ýÆÀÂÛÊ±
+    OPEN_FORUMS_EVENT (1 << 18)       // è®ºå›äº‹ä»¶, æ­¤ä¸ºå…¬åŸŸçš„è®ºå›äº‹ä»¶
+    - OPEN_FORUM_THREAD_CREATE        // å½“ç”¨æˆ·åˆ›å»ºä¸»é¢˜æ—¶
+    - OPEN_FORUM_THREAD_UPDATE        // å½“ç”¨æˆ·æ›´æ–°ä¸»é¢˜æ—¶
+    - OPEN_FORUM_THREAD_DELETE        // å½“ç”¨æˆ·åˆ é™¤ä¸»é¢˜æ—¶
+    - OPEN_FORUM_POST_CREATE          // å½“ç”¨æˆ·åˆ›å»ºå¸–å­æ—¶
+    - OPEN_FORUM_POST_DELETE          // å½“ç”¨æˆ·åˆ é™¤å¸–å­æ—¶
+    - OPEN_FORUM_REPLY_CREATE         // å½“ç”¨æˆ·å›žå¤è¯„è®ºæ—¶
+    - OPEN_FORUM_REPLY_DELETE         // å½“ç”¨æˆ·åˆ é™¤è¯„è®ºæ—¶
     
-    AUDIO_OR_LIVE_CHANNEL_MEMBER (1 << 19)    // ÒôÊÓÆµ/Ö±²¥×ÓÆµµÀ³ÉÔ±½ø³öÊÂ¼þ
-    - AUDIO_OR_LIVE_CHANNEL_MEMBER_ENTER      // µ±ÓÃ»§½øÈëÒôÊÓÆµ/Ö±²¥×ÓÆµµÀ
-    - AUDIO_OR_LIVE_CHANNEL_MEMBER_EXIT       // µ±ÓÃ»§Àë¿ªÒôÊÓÆµ/Ö±²¥×ÓÆµµÀ
+    AUDIO_OR_LIVE_CHANNEL_MEMBER (1 << 19)    // éŸ³è§†é¢‘/ç›´æ’­å­é¢‘é“æˆå‘˜è¿›å‡ºäº‹ä»¶
+    - AUDIO_OR_LIVE_CHANNEL_MEMBER_ENTER      // å½“ç”¨æˆ·è¿›å…¥éŸ³è§†é¢‘/ç›´æ’­å­é¢‘é“
+    - AUDIO_OR_LIVE_CHANNEL_MEMBER_EXIT       // å½“ç”¨æˆ·ç¦»å¼€éŸ³è§†é¢‘/ç›´æ’­å­é¢‘é“
     
     INTERACTION (1 << 26)
-    - INTERACTION_CREATE     // »¥¶¯ÊÂ¼þ´´½¨Ê±
+    - INTERACTION_CREATE     // äº’åŠ¨äº‹ä»¶åˆ›å»ºæ—¶
     
     MESSAGE_AUDIT (1 << 27)
-  - MESSAGE_AUDIT_PASS     // ÏûÏ¢ÉóºËÍ¨¹ý
-  - MESSAGE_AUDIT_REJECT   // ÏûÏ¢ÉóºË²»Í¨¹ý
+  - MESSAGE_AUDIT_PASS     // æ¶ˆæ¯å®¡æ ¸é€šè¿‡
+  - MESSAGE_AUDIT_REJECT   // æ¶ˆæ¯å®¡æ ¸ä¸é€šè¿‡
     
-    FORUMS_EVENT (1 << 28)  // ÂÛÌ³ÊÂ¼þ£¬½ö *Ë½Óò* »úÆ÷ÈËÄÜ¹»ÉèÖÃ´Ë intents¡£
-    - FORUM_THREAD_CREATE             // µ±ÓÃ»§´´½¨Ö÷ÌâÊ±
-    - FORUM_THREAD_UPDATE             // µ±ÓÃ»§¸üÐÂÖ÷ÌâÊ±
-    - FORUM_THREAD_DELETE             // µ±ÓÃ»§É¾³ýÖ÷ÌâÊ±
-    - FORUM_POST_CREATE               // µ±ÓÃ»§´´½¨Ìû×ÓÊ±
-    - FORUM_POST_DELETE               // µ±ÓÃ»§É¾³ýÌû×ÓÊ±
-    - FORUM_REPLY_CREATE              // µ±ÓÃ»§»Ø¸´ÆÀÂÛÊ±
-    - FORUM_REPLY_DELETE              // µ±ÓÃ»§É¾³ýÆÀÂÛÊ±
-    - FORUM_PUBLISH_AUDIT_RESULT      // µ±ÓÃ»§·¢±íÉóºËÍ¨¹ýÊ±
+    FORUMS_EVENT (1 << 28)  // è®ºå›äº‹ä»¶ï¼Œä»… *ç§åŸŸ* æœºå™¨äººèƒ½å¤Ÿè®¾ç½®æ­¤ intentsã€‚
+    - FORUM_THREAD_CREATE             // å½“ç”¨æˆ·åˆ›å»ºä¸»é¢˜æ—¶
+    - FORUM_THREAD_UPDATE             // å½“ç”¨æˆ·æ›´æ–°ä¸»é¢˜æ—¶
+    - FORUM_THREAD_DELETE             // å½“ç”¨æˆ·åˆ é™¤ä¸»é¢˜æ—¶
+    - FORUM_POST_CREATE               // å½“ç”¨æˆ·åˆ›å»ºå¸–å­æ—¶
+    - FORUM_POST_DELETE               // å½“ç”¨æˆ·åˆ é™¤å¸–å­æ—¶
+    - FORUM_REPLY_CREATE              // å½“ç”¨æˆ·å›žå¤è¯„è®ºæ—¶
+    - FORUM_REPLY_DELETE              // å½“ç”¨æˆ·åˆ é™¤è¯„è®ºæ—¶
+    - FORUM_PUBLISH_AUDIT_RESULT      // å½“ç”¨æˆ·å‘è¡¨å®¡æ ¸é€šè¿‡æ—¶
     
     AUDIO_ACTION (1 << 29)
-    - AUDIO_START             // ÒôÆµ¿ªÊ¼²¥·ÅÊ±
-    - AUDIO_FINISH            // ÒôÆµ²¥·Å½áÊøÊ±
-    - AUDIO_ON_MIC            // ÉÏÂóÊ±
-    - AUDIO_OFF_MIC           // ÏÂÂóÊ±
+    - AUDIO_START             // éŸ³é¢‘å¼€å§‹æ’­æ”¾æ—¶
+    - AUDIO_FINISH            // éŸ³é¢‘æ’­æ”¾ç»“æŸæ—¶
+    - AUDIO_ON_MIC            // ä¸Šéº¦æ—¶
+    - AUDIO_OFF_MIC           // ä¸‹éº¦æ—¶
     
-    PUBLIC_GUILD_MESSAGES (1 << 30) // ÏûÏ¢ÊÂ¼þ£¬´ËÎª¹«ÓòµÄÏûÏ¢ÊÂ¼þ
-    - AT_MESSAGE_CREATE       // µ±ÊÕµ½@»úÆ÷ÈËµÄÏûÏ¢Ê±
-    - PUBLIC_MESSAGE_DELETE   // µ±ÆµµÀµÄÏûÏ¢±»É¾³ýÊ±
+    PUBLIC_GUILD_MESSAGES (1 << 30) // æ¶ˆæ¯äº‹ä»¶ï¼Œæ­¤ä¸ºå…¬åŸŸçš„æ¶ˆæ¯äº‹ä»¶
+    - AT_MESSAGE_CREATE       // å½“æ”¶åˆ°@æœºå™¨äººçš„æ¶ˆæ¯æ—¶
+    - PUBLIC_MESSAGE_DELETE   // å½“é¢‘é“çš„æ¶ˆæ¯è¢«åˆ é™¤æ—¶

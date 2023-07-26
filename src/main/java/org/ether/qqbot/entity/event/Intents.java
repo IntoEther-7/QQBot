@@ -1,103 +1,131 @@
 package org.ether.qqbot.entity.event;
 
+import java.util.HashMap;
+
 /**
  * @author IntoEther-7
  * @date 2023/7/7 15:57
  * @project ZhihuProject
  */
 public enum Intents {
-    READY,
+    READY(null, "READY"),
 
 
+    GUILDS(1 << 0, "GUILDS"),
+    GUILD_CREATE(1 << 0, "å½“æœºå™¨äººåŠ å…¥æ–°guildæ—¶", "GUILD_CREATE"),
+    GUILD_UPDATE(1 << 0, "å½“guildèµ„æ–™å‘ç”Ÿå˜æ›´æ—¶", "GUILD_UPDATE"),
+    GUILD_DELETE(1 << 0, "å½“æœºå™¨äººé€€å‡ºguildæ—¶", "GUILD_DELETE"),
+    CHANNEL_CREATE(1 << 0, "å½“channelè¢«åˆ›å»ºæ—¶", "CHANNEL_CREATE"),
+    CHANNEL_UPDATE(1 << 0, "å½“channelè¢«æ›´æ–°æ—¶", "CHANNEL_UPDATE"),
+    CHANNEL_DELETE(1 << 0, "å½“channelè¢«åˆ é™¤æ—¶", "CHANNEL_DELETE"),
 
-    GUILDS(1 << 0),
-    GUILD_CREATE(1 << 0, "µ±»úÆ÷ÈË¼ÓÈëÐÂguildÊ±"),
-    GUILD_UPDATE(1 << 0, "µ±guild×ÊÁÏ·¢Éú±ä¸üÊ±"),
-    GUILD_DELETE(1 << 0, "µ±»úÆ÷ÈËÍË³öguildÊ±"),
-    CHANNEL_CREATE(1 << 0, "µ±channel±»´´½¨Ê±"),
-    CHANNEL_UPDATE(1 << 0, "µ±channel±»¸üÐÂÊ±"),
-    CHANNEL_DELETE(1 << 0, "µ±channel±»É¾³ýÊ±"),
+    GUILD_MEMBERS(1 << 1, "GUILD_MEMBERS"),
+    GUILD_MEMBER_ADD(1 << 1, "å½“æˆå‘˜åŠ å…¥æ—¶", "GUILD_MEMBER_ADD"),
+    GUILD_MEMBER_UPDATE(1 << 1, "å½“æˆå‘˜èµ„æ–™å˜æ›´æ—¶", "GUILD_MEMBER_UPDATE"),
+    GUILD_MEMBER_REMOVE(1 << 1, "å½“æˆå‘˜è¢«ç§»é™¤æ—¶", "GUILD_MEMBER_REMOVE"),
 
-    GUILD_MEMBERS(1 << 1),
-    GUILD_MEMBER_ADD(1 << 1, "µ±³ÉÔ±¼ÓÈëÊ±"),
-    GUILD_MEMBER_UPDATE(1 << 1, "µ±³ÉÔ±×ÊÁÏ±ä¸üÊ±"),
-    GUILD_MEMBER_REMOVE(1 << 1, "µ±³ÉÔ±±»ÒÆ³ýÊ±"),
+    GUILD_MESSAGES(1 << 9, "æ¶ˆæ¯äº‹ä»¶ï¼Œä»… *ç§åŸŸ* æœºå™¨äººèƒ½å¤Ÿè®¾ç½®æ­¤ intentsã€‚", "GUILD_MESSAGES"),
+    MESSAGE_CREATE(1 << 9, "å‘é€æ¶ˆæ¯äº‹ä»¶ï¼Œä»£è¡¨é¢‘é“å†…çš„å…¨éƒ¨æ¶ˆæ¯ï¼Œè€Œä¸åªæ˜¯ at æœºå™¨äººçš„æ¶ˆæ¯ã€‚å†…å®¹ä¸Ž AT_MESSAGE_CREATE ç›¸åŒ", "MESSAGE_CREATE"),
+    MESSAGE_DELETE(1 << 9, "åˆ é™¤ï¼ˆæ’¤å›žï¼‰æ¶ˆæ¯äº‹ä»¶", "MESSAGE_DELETE"),
 
-    GUILD_MESSAGES(1 << 9, "ÏûÏ¢ÊÂ¼þ£¬½ö *Ë½Óò* »úÆ÷ÈËÄÜ¹»ÉèÖÃ´Ë intents¡£"),
-    MESSAGE_CREATE(1 << 9, "·¢ËÍÏûÏ¢ÊÂ¼þ£¬´ú±íÆµµÀÄÚµÄÈ«²¿ÏûÏ¢£¬¶ø²»Ö»ÊÇ at »úÆ÷ÈËµÄÏûÏ¢¡£ÄÚÈÝÓë AT_MESSAGE_CREATE ÏàÍ¬"),
-    MESSAGE_DELETE(1 << 9, "É¾³ý£¨³·»Ø£©ÏûÏ¢ÊÂ¼þ"),
+    GUILD_MESSAGE_REACTIONS(1 << 10, "GUILD_MESSAGE_REACTIONS"),
+    MESSAGE_REACTION_ADD(1 << 10, "ä¸ºæ¶ˆæ¯æ·»åŠ è¡¨æƒ…è¡¨æ€", "MESSAGE_REACTION_ADD"),
+    MESSAGE_REACTION_REMOVE(1 << 10, "ä¸ºæ¶ˆæ¯åˆ é™¤è¡¨æƒ…è¡¨æ€", "MESSAGE_REACTION_REMOVE"),
 
-    GUILD_MESSAGE_REACTIONS(1 << 10),
-    MESSAGE_REACTION_ADD(1 << 10, "ÎªÏûÏ¢Ìí¼Ó±íÇé±íÌ¬"),
-    MESSAGE_REACTION_REMOVE(1 << 10, "ÎªÏûÏ¢É¾³ý±íÇé±íÌ¬"),
+    DIRECT_MESSAGE(1 << 12, "DIRECT_MESSAGE"),
+    DIRECT_MESSAGE_CREATE(1 << 12, "å½“æ”¶åˆ°ç”¨æˆ·å‘ç»™æœºå™¨äººçš„ç§ä¿¡æ¶ˆæ¯æ—¶", "DIRECT_MESSAGE_CREATE"),
+    DIRECT_MESSAGE_DELETE(1 << 12, "åˆ é™¤ï¼ˆæ’¤å›žï¼‰æ¶ˆæ¯äº‹ä»¶", "DIRECT_MESSAGE_DELETE"),
 
-    DIRECT_MESSAGE(1 << 12),
-    DIRECT_MESSAGE_CREATE(1 << 12, "µ±ÊÕµ½ÓÃ»§·¢¸ø»úÆ÷ÈËµÄË½ÐÅÏûÏ¢Ê±"),
-    DIRECT_MESSAGE_DELETE(1 << 12, "É¾³ý£¨³·»Ø£©ÏûÏ¢ÊÂ¼þ"),
+    OPEN_FORUMS_EVENT(1 << 18, "è®ºå›äº‹ä»¶, æ­¤ä¸ºå…¬åŸŸçš„è®ºå›äº‹ä»¶", "OPEN_FORUMS_EVENT"),
+    OPEN_FORUM_THREAD_CREATE(1 << 18, "å½“ç”¨æˆ·åˆ›å»ºä¸»é¢˜æ—¶", "OPEN_FORUM_THREAD_CREATE"),
+    OPEN_FORUM_THREAD_UPDATE(1 << 18, "å½“ç”¨æˆ·æ›´æ–°ä¸»é¢˜æ—¶", "OPEN_FORUM_THREAD_UPDATE"),
+    OPEN_FORUM_THREAD_DELETE(1 << 18, "å½“ç”¨æˆ·åˆ é™¤ä¸»é¢˜æ—¶", "OPEN_FORUM_THREAD_DELETE"),
+    OPEN_FORUM_POST_CREATE(1 << 18, "å½“ç”¨æˆ·åˆ›å»ºå¸–å­æ—¶", "OPEN_FORUM_POST_CREATE"),
+    OPEN_FORUM_POST_DELETE(1 << 18, "å½“ç”¨æˆ·åˆ é™¤å¸–å­æ—¶", "OPEN_FORUM_POST_DELETE"),
+    OPEN_FORUM_REPLY_CREATE(1 << 18, "å½“ç”¨æˆ·å›žå¤è¯„è®ºæ—¶", "OPEN_FORUM_REPLY_CREATE"),
+    OPEN_FORUM_REPLY_DELETE(1 << 18, "å½“ç”¨æˆ·åˆ é™¤è¯„è®ºæ—¶", "OPEN_FORUM_REPLY_DELETE"),
 
-    OPEN_FORUMS_EVENT(1 << 18, "ÂÛÌ³ÊÂ¼þ, ´ËÎª¹«ÓòµÄÂÛÌ³ÊÂ¼þ"),
-    OPEN_FORUM_THREAD_CREATE(1 << 18, "µ±ÓÃ»§´´½¨Ö÷ÌâÊ±"),
-    OPEN_FORUM_THREAD_UPDATE(1 << 18, "µ±ÓÃ»§¸üÐÂÖ÷ÌâÊ±"),
-    OPEN_FORUM_THREAD_DELETE(1 << 18, "µ±ÓÃ»§É¾³ýÖ÷ÌâÊ±"),
-    OPEN_FORUM_POST_CREATE(1 << 18, "µ±ÓÃ»§´´½¨Ìû×ÓÊ±"),
-    OPEN_FORUM_POST_DELETE(1 << 18, "µ±ÓÃ»§É¾³ýÌû×ÓÊ±"),
-    OPEN_FORUM_REPLY_CREATE(1 << 18, "µ±ÓÃ»§»Ø¸´ÆÀÂÛÊ±"),
-    OPEN_FORUM_REPLY_DELETE(1 << 18, "µ±ÓÃ»§É¾³ýÆÀÂÛÊ±"),
+    AUDIO_OR_LIVE_CHANNEL_MEMBER(1 << 19, "éŸ³è§†é¢‘/ç›´æ’­å­é¢‘é“æˆå‘˜è¿›å‡ºäº‹ä»¶", "AUDIO_OR_LIVE_CHANNEL_MEMBER"),
+    AUDIO_OR_LIVE_CHANNEL_MEMBER_ENTER(1 << 19, "éŸ³è§†é¢‘/ç›´æ’­å­é¢‘é“æˆå‘˜è¿›å‡ºäº‹ä»¶", "AUDIO_OR_LIVE_CHANNEL_MEMBER_ENTER"),
+    AUDIO_OR_LIVE_CHANNEL_MEMBER_EXIT(1 << 19, "å½“ç”¨æˆ·è¿›å…¥éŸ³è§†é¢‘/ç›´æ’­å­é¢‘é“", "AUDIO_OR_LIVE_CHANNEL_MEMBER_EXIT"),
 
-    AUDIO_OR_LIVE_CHANNEL_MEMBER(1 << 19, "ÒôÊÓÆµ/Ö±²¥×ÓÆµµÀ³ÉÔ±½ø³öÊÂ¼þ"),
-    AUDIO_OR_LIVE_CHANNEL_MEMBER_ENTER(1 << 19, "ÒôÊÓÆµ/Ö±²¥×ÓÆµµÀ³ÉÔ±½ø³öÊÂ¼þ"),
-    AUDIO_OR_LIVE_CHANNEL_MEMBER_EXIT(1 << 19, "µ±ÓÃ»§½øÈëÒôÊÓÆµ/Ö±²¥×ÓÆµµÀ"),
+    INTERACTION(1 << 26, "INTERACTION"),
+    INTERACTION_CREATE(1 << 26, "äº’åŠ¨äº‹ä»¶åˆ›å»ºæ—¶", "INTERACTION_CREATE"),
 
-    INTERACTION(1 << 26),
-    INTERACTION_CREATE(1 << 26, "»¥¶¯ÊÂ¼þ´´½¨Ê±"),
+    MESSAGE_AUDIT(1 << 27, "MESSAGE_AUDIT"),
+    MESSAGE_AUDIT_PASS(1 << 27, "æ¶ˆæ¯å®¡æ ¸é€šè¿‡", "MESSAGE_AUDIT_PASS"),
+    MESSAGE_AUDIT_REJECT(1 << 27, "æ¶ˆæ¯å®¡æ ¸ä¸é€šè¿‡", "MESSAGE_AUDIT_REJECT"),
 
-    MESSAGE_AUDIT(1 << 27),
-    MESSAGE_AUDIT_PASS(1 << 27, "ÏûÏ¢ÉóºËÍ¨¹ý"),
-    MESSAGE_AUDIT_REJECT(1 << 27, "ÏûÏ¢ÉóºË²»Í¨¹ý"),
+    FORUMS_EVENT(1 << 28, "è®ºå›äº‹ä»¶ï¼Œä»… *ç§åŸŸ* æœºå™¨äººèƒ½å¤Ÿè®¾ç½®æ­¤ intentsã€‚", "FORUMS_EVENT"),
+    FORUM_THREAD_CREATE(1 << 28, "å½“ç”¨æˆ·åˆ›å»ºä¸»é¢˜æ—¶", "FORUM_THREAD_CREATE"),
+    FORUM_THREAD_UPDATE(1 << 28, "å½“ç”¨æˆ·æ›´æ–°ä¸»é¢˜æ—¶", "FORUM_THREAD_UPDATE"),
+    FORUM_THREAD_DELETE(1 << 28, "å½“ç”¨æˆ·åˆ é™¤ä¸»é¢˜æ—¶", "FORUM_THREAD_DELETE"),
+    FORUM_POST_CREATE(1 << 28, "å½“ç”¨æˆ·åˆ›å»ºå¸–å­æ—¶", "FORUM_POST_CREATE"),
+    FORUM_POST_DELETE(1 << 28, "å½“ç”¨æˆ·åˆ é™¤å¸–å­æ—¶", "FORUM_POST_DELETE"),
+    FORUM_REPLY_CREATE(1 << 28, "å½“ç”¨æˆ·å›žå¤è¯„è®ºæ—¶", "FORUM_REPLY_CREATE"),
+    FORUM_REPLY_DELETE(1 << 28, "å½“ç”¨æˆ·åˆ é™¤è¯„è®ºæ—¶", "FORUM_REPLY_DELETE"),
+    FORUM_PUBLISH_AUDIT_RESULT(1 << 28, "å½“ç”¨æˆ·å‘è¡¨å®¡æ ¸é€šè¿‡æ—¶", "FORUM_PUBLISH_AUDIT_RESULT"),
 
-    FORUMS_EVENT(1 << 28, "ÂÛÌ³ÊÂ¼þ£¬½ö *Ë½Óò* »úÆ÷ÈËÄÜ¹»ÉèÖÃ´Ë intents¡£"),
-    FORUM_THREAD_CREATE(1 << 28, "µ±ÓÃ»§´´½¨Ö÷ÌâÊ±"),
-    FORUM_THREAD_UPDATE(1 << 28, "µ±ÓÃ»§¸üÐÂÖ÷ÌâÊ±"),
-    FORUM_THREAD_DELETE(1 << 28, "µ±ÓÃ»§É¾³ýÖ÷ÌâÊ±"),
-    FORUM_POST_CREATE(1 << 28, "µ±ÓÃ»§´´½¨Ìû×ÓÊ±"),
-    FORUM_POST_DELETE(1 << 28, "µ±ÓÃ»§É¾³ýÌû×ÓÊ±"),
-    FORUM_REPLY_CREATE(1 << 28, "µ±ÓÃ»§»Ø¸´ÆÀÂÛÊ±"),
-    FORUM_REPLY_DELETE(1 << 28, "µ±ÓÃ»§É¾³ýÆÀÂÛÊ±"),
-    FORUM_PUBLISH_AUDIT_RESULT(1 << 28, "µ±ÓÃ»§·¢±íÉóºËÍ¨¹ýÊ±"),
+    AUDIO_ACTION(1 << 29, "AUDIO_ACTION"),
+    AUDIO_START(1 << 29, "éŸ³é¢‘å¼€å§‹æ’­æ”¾æ—¶", "AUDIO_START"),
+    AUDIO_FINISH(1 << 29, "éŸ³é¢‘æ’­æ”¾ç»“æŸæ—¶", "AUDIO_FINISH"),
+    AUDIO_ON_MIC(1 << 29, "ä¸Šéº¦æ—¶", "AUDIO_ON_MIC"),
+    AUDIO_OFF_MIC(1 << 29, "ä¸‹éº¦æ—¶", "AUDIO_OFF_MIC"),
 
-    AUDIO_ACTION(1 << 29),
-    AUDIO_START(1 << 29, "ÒôÆµ¿ªÊ¼²¥·ÅÊ±"),
-    AUDIO_FINISH(1 << 29, "ÒôÆµ²¥·Å½áÊøÊ±"),
-    AUDIO_ON_MIC(1 << 29, "ÉÏÂóÊ±"),
-    AUDIO_OFF_MIC(1 << 29, "ÏÂÂóÊ±"),
+    PUBLIC_GUILD_MESSAGES(1 << 30, "æ¶ˆæ¯äº‹ä»¶ï¼Œæ­¤ä¸ºå…¬åŸŸçš„æ¶ˆæ¯äº‹ä»¶", "PUBLIC_GUILD_MESSAGES"),
+    AT_MESSAGE_CREATE(1 << 30, "å½“æ”¶åˆ°@æœºå™¨äººçš„æ¶ˆæ¯æ—¶", "AT_MESSAGE_CREATE"),
+    PUBLIC_MESSAGE_DELETE(1 << 30, "å½“é¢‘é“çš„æ¶ˆæ¯è¢«åˆ é™¤æ—¶", "PUBLIC_MESSAGE_DELETE");
 
-    PUBLIC_GUILD_MESSAGES(1 << 30, "ÏûÏ¢ÊÂ¼þ£¬´ËÎª¹«ÓòµÄÏûÏ¢ÊÂ¼þ"),
-    AT_MESSAGE_CREATE(1 << 30, "µ±ÊÕµ½@»úÆ÷ÈËµÄÏûÏ¢Ê±"),
-    PUBLIC_MESSAGE_DELETE(1 << 30, "µ±ÆµµÀµÄÏûÏ¢±»É¾³ýÊ±");
-
-    private final int code;
+    private final Integer code;
     private final String desc;
+    private final String name;
+    public static final HashMap<String, Intents> map = new HashMap<>();
+
+    static {
+        for (Intents intents : Intents.values()) {
+            map.put(intents.name, intents);
+        }
+    }
 
     Intents() {
-        this.code = 0;
+        this.code = null;
         this.desc = "";
+        this.name = "";
     }
 
-    Intents(int code) {
+    Intents(Integer code) {
         this.code = code;
         this.desc = "";
+        this.name = "";
     }
 
-    Intents(int code, String desc) {
+
+    Intents(Integer code, String desc) {
         this.code = code;
         this.desc = desc;
+        this.name = "";
+    }
+
+    Intents(int code, String desc, String name) {
+        this.code = code;
+        this.desc = desc;
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "Intents{" +
-                "code=" + code +
-                ", desc='" + desc + '\'' +
-                '}';
+        return "Intents{" + "code=" + code + ", desc='" + desc + '\'' + '}';
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public String getName() {
+        return name;
     }
 }

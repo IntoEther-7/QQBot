@@ -12,9 +12,9 @@ import org.ether.qqbot.entity.event.Opcode;
 @Data
 public class WebSocketPayload {
     private Integer op; // opcode
-    private Integer s; // 消息序列号seq
-    private String t; // 消息类型
-    private Object d; // 消息内容
+    private Integer s; // 娑堟伅搴忓垪鍙穝eq
+    private String t; // 娑堟伅绫诲瀷
+    private Object d; // 娑堟伅鍐呭
     private Opcode opcode;
     private Intents intents;
 
@@ -38,7 +38,7 @@ public class WebSocketPayload {
     }
 
     /**
-     * 消息序列号seq
+     * 娑堟伅搴忓垪鍙穝eq
      *
      * @return
      */
@@ -47,7 +47,7 @@ public class WebSocketPayload {
     }
 
     /**
-     * 消息序列号seq
+     * 娑堟伅搴忓垪鍙穝eq
      *
      * @param s
      */
@@ -56,7 +56,7 @@ public class WebSocketPayload {
     }
 
     /**
-     * 消息类型
+     * 娑堟伅绫诲瀷
      *
      * @return
      */
@@ -65,7 +65,7 @@ public class WebSocketPayload {
     }
 
     /**
-     * 消息类型
+     * 娑堟伅绫诲瀷
      *
      * @param t
      */
@@ -75,7 +75,7 @@ public class WebSocketPayload {
     }
 
     /**
-     * 消息内容
+     * 娑堟伅鍐呭
      *
      * @return
      */
@@ -84,7 +84,7 @@ public class WebSocketPayload {
     }
 
     /**
-     * 消息内容
+     * 娑堟伅鍐呭
      *
      * @param d
      */
