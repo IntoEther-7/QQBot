@@ -1,6 +1,7 @@
-package org.ether.qqbot.my_message_handler;
+package org.ether.qqbot.my_message_handler.impl;
 
 import org.ether.qqbot.entity.MyPayload;
+import org.ether.qqbot.my_message_handler.MessageHandler;
 
 /**
  * @author IntoEther-7

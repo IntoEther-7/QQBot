@@ -6,8 +6,9 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.ether.qqbot.entity.MyPayload;
 import org.ether.qqbot.entity.event.Intents;
-import org.ether.qqbot.my_message_handler.HeartbeatMessageHandler;
-import org.ether.qqbot.my_message_handler.IdentifyMessageHandler;
+import org.ether.qqbot.my_message_handler.impl.HeartbeatMessageHandler;
+import org.ether.qqbot.my_message_handler.impl.IdentifyMessageHandler;
+import org.ether.qqbot.my_message_handler.MessageHandler;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft;
 import org.java_websocket.handshake.ServerHandshake;
@@ -30,37 +31,90 @@ public class MyWebSocketClient extends WebSocketClient {
     private final String token; // token, 初始化需要
     private final Intents intents; // token, 初始化需要
     private Thread heartbeatRun; // 心跳线程
+    private MessageHandler service; // 服务消息的对象
 
-    public MyWebSocketClient(URI serverUri, String token, Intents intents) {
+    public MyWebSocketClient(URI serverUri, String token, Intents intents, MessageHandler service) {
         super(serverUri);
         this.token = token;
         this.intents = intents;
+        this.service = service;
+        heartbeatRun = new Thread(() -> {
+            synchronized (deque) {
+                try {
+                    this.send(mapper.writeValueAsString(heartbeatMessageHandler.handle(deque.peek())));
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 
-    public MyWebSocketClient(URI serverUri, String token, Intents intents, Draft protocolDraft) {
+    public MyWebSocketClient(URI serverUri, String token, Intents intents, MessageHandler service,
+                             Draft protocolDraft) {
         super(serverUri, protocolDraft);
         this.token = token;
         this.intents = intents;
+        this.service = service;
+        heartbeatRun = new Thread(() -> {
+            synchronized (deque) {
+                try {
+                    this.send(mapper.writeValueAsString(heartbeatMessageHandler.handle(deque.peek())));
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 
-    public MyWebSocketClient(URI serverUri, String token, Intents intents, Map<String, String> httpHeaders) {
+    public MyWebSocketClient(URI serverUri, String token, Intents intents, MessageHandler service, Map<String,
+            String> httpHeaders) {
         super(serverUri, httpHeaders);
         this.token = token;
         this.intents = intents;
+        this.service = service;
+        heartbeatRun = new Thread(() -> {
+            synchronized (deque) {
+                try {
+                    this.send(mapper.writeValueAsString(heartbeatMessageHandler.handle(deque.peek())));
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 
-    public MyWebSocketClient(URI serverUri, String token, Intents intents, Draft protocolDraft,
+    public MyWebSocketClient(URI serverUri, String token, Intents intents, MessageHandler service, Draft protocolDraft,
                              Map<String, String> httpHeaders) {
         super(serverUri, protocolDraft, httpHeaders);
         this.token = token;
         this.intents = intents;
+        this.service = service;
+        heartbeatRun = new Thread(() -> {
+            synchronized (deque) {
+                try {
+                    this.send(mapper.writeValueAsString(heartbeatMessageHandler.handle(deque.peek())));
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 
-    public MyWebSocketClient(URI serverUri, String token, Intents intents, Draft protocolDraft,
+    public MyWebSocketClient(URI serverUri, String token, Intents intents, MessageHandler service, Draft protocolDraft,
                              Map<String, String> httpHeaders, int connectTimeout) {
         super(serverUri, protocolDraft, httpHeaders, connectTimeout);
         this.token = token;
         this.intents = intents;
+        this.service = service;
+        heartbeatRun = new Thread(() -> {
+            synchronized (deque) {
+                try {
+                    this.send(mapper.writeValueAsString(heartbeatMessageHandler.handle(deque.peek())));
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 
     @Override
@@ -112,20 +166,14 @@ public class MyWebSocketClient extends WebSocketClient {
                     // TODO: 定时任务
                 }
                 log.info("---------------具体监听此消息所做的业务流程, 待补充----------------");
+                MyPayload handle = service.handle(message);
+                this.send(mapper.writeValueAsString(handle));
+                log.info("---------------具体监听此消息所做的业务流程, 待补充----------------");
                 break;
             case 7:
                 // 鉴权
-                MyPayload identifyMessage = new IdentifyMessageHandler(token, intents).handle(null);
+                MyPayload identifyMessage = new IdentifyMessageHandler(token, intents).handle(message);
                 this.send(mapper.writeValueAsString(identifyMessage));
-                heartbeatRun = new Thread(() -> {
-                    synchronized (deque) {
-                        try {
-                            this.send(mapper.writeValueAsString(heartbeatMessageHandler.handle(deque.peek())));
-                        } catch (JsonProcessingException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                });
                 break;
             case 10:
                 break;
@@ -142,4 +190,5 @@ public class MyWebSocketClient extends WebSocketClient {
     public void onError(Exception e) {
         log.info("出错");
     }
+
 }

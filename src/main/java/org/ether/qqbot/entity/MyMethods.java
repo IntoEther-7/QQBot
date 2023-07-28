@@ -7,7 +7,7 @@ package org.ether.qqbot.entity;
  */
 public enum MyMethods {
     WSS("/gateway"), // https://bot.q.qq.com/wiki/develop/api/openapi/wss/url_get.html
-    WSS_SHARDING("/gateway"), // https://bot.q.qq.com/wiki/develop/api/openapi/wss/shard_url_get.html
+    WSS_SHARDING("/gateway/bot"), // https://bot.q.qq.com/wiki/develop/api/openapi/wss/shard_url_get.html
 
     ;
     private String METHOD;

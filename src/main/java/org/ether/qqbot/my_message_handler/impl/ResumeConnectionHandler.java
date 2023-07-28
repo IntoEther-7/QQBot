@@ -1,4 +1,4 @@
-package org.ether.qqbot.my_message_handler;
+package org.ether.qqbot.my_message_handler.impl;
 
 /**
  * @author IntoEther-7
@@ -7,6 +7,7 @@ package org.ether.qqbot.my_message_handler;
  */
 
 import org.ether.qqbot.entity.MyPayload;
+import org.ether.qqbot.my_message_handler.MessageHandler;
 
 import java.util.HashMap;
 

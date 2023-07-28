@@ -1,4 +1,4 @@
-package org.ether.qqbot.my_message_handler;
+package org.ether.qqbot.my_message_handler.impl;
 
 /**
  * @author IntoEther-7
@@ -8,13 +8,14 @@ package org.ether.qqbot.my_message_handler;
 
 import org.ether.qqbot.entity.MyPayload;
 import org.ether.qqbot.entity.event.Intents;
+import org.ether.qqbot.my_message_handler.MessageHandler;
 
 import java.util.HashMap;
 
 /**
  * 专门处理鉴权的事务
  */
-public class IdentifyMessageHandler implements MessageHandler{
+public class IdentifyMessageHandler implements MessageHandler {
     int heartbeat_interval;
     int op = 2;
     private HashMap<String, Object> map;
